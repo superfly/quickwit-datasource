@@ -42,6 +42,9 @@ func NewQuickwitDatasource(settings backend.DataSourceInstanceSettings) (instanc
 		return nil, fmt.Errorf("error reading settings: %w", err)
 	}
 	httpCliOpts, err := settings.HTTPClientOptions()
+
+	httpCliOpts.ForwardHTTPHeaders = true
+
 	if err != nil {
 		return nil, fmt.Errorf("error getting http options: %w", err)
 	}
